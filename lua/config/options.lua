@@ -7,3 +7,9 @@ vim.opt.swapfile = false
 vim.opt.relativenumber = false
 
 -- vim.opt.wrap = true
+vim.g.fd_binary_name = "fdfind"
+
+vim.g.autoformat = true
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true

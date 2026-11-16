@@ -1,3 +1,4 @@
+-- ~/.config/nvim/init.lua
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -15,40 +16,23 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- El plugin principal de LazyVim
-  "LazyVim/LazyVim",
+  { "LazyVim/LazyVim" },
   { import = "lazyvim.plugins" },
 
-  -- Importa todos los extras que solicitaste
+  -- Extras (sin xml)
+  { import = "lazyvim.plugins.extras.lang.python" },
   { import = "lazyvim.plugins.extras.lang.typescript" },
-  { import = "lazyvim.plugins.extras.linting.eslint" },
-  { import = "lazyvim.plugins.extras.formatting.prettier" },
-  { import = "lazyvim.plugins.extras.dap.core" }, -- Depuración (Debugging)
-
   { import = "lazyvim.plugins.extras.lang.json" },
   { import = "lazyvim.plugins.extras.lang.yaml" },
+  { import = "lazyvim.plugins.extras.linting.eslint" },
+  { import = "lazyvim.plugins.extras.formatting.prettier" },
+  { import = "lazyvim.plugins.extras.dap.core" },
   { import = "lazyvim.plugins.extras.test.core" },
 
-  -- Importa tus plugins personales de la carpeta 'plugins'
+  -- Tus plugins personales (carpeta lua/plugins)
   { import = "plugins" },
 }, {
-  defaults = {
-    lazy = false,
-    version = false,
-  },
-  checker = {
-    enabled = true,
-    notify = false,
-  },
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        "gzip",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      },
-    },
-  },
+  defaults = { lazy = false, version = false },
+  checker = { enabled = true, notify = false },
+  performance = { rtp = { disabled_plugins = { "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin" } } },
 })

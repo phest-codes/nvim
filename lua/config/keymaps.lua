@@ -7,3 +7,8 @@ vim.keymap.set("n", "<leader>y", function()
 	vim.cmd("%y +")
 	vim.notify("Yank entire buffer to clipboard", vim.log.levels.INFO)
 end, { desc = "Copiar todo el buffer al portapapeles" })
+
+-- Presiona Espacio + p para pegar en la línea de abajo en modo normal
+-- vim.keymap.set("n", "<leader>p", ":put<CR>", { desc = "Pegar en la línea de abajo" })
+vim.keymap.set("n", "<leader>xd", "<cmd>%d<cr>", { desc = "Borrar todo el contenido" })
+
